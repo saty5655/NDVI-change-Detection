@@ -1,160 +1,44 @@
-🌱 NDVI Change Detection using Remote Sensing
-📌 Project Overview
+NDVI Change Detection Using Remote Sensing
+Abstract
 
-This project focuses on Normalized Difference Vegetation Index (NDVI) change detection to analyze vegetation dynamics over time using satellite imagery. NDVI is widely used to monitor crop health, vegetation cover, land degradation, and environmental changes.
+This project presents an NDVI-based change detection approach to assess spatio-temporal variations in vegetation cover using multispectral satellite imagery. By comparing NDVI values across multiple time periods, areas of vegetation increase, decrease, and stability are identified. The methodology supports applications in agricultural monitoring, land-use analysis, and environmental assessment.
 
-The study compares NDVI values across different time periods to identify vegetation increase, decrease, or stability in the selected region of interest (ROI).
+Objectives
 
-🎯 Objectives
+The objectives of this study are to compute NDVI from multispectral satellite data, analyze temporal changes in vegetation, identify regions of significant vegetation gain and loss, and visualize NDVI patterns and change dynamics over time.
 
-Compute NDVI from multispectral satellite imagery
+Data
 
-Perform temporal NDVI change detection
+Sentinel-2 Level-2A imagery was used due to its high spatial and temporal resolution. The analysis employed Band 4 (Red) and Band 8 (Near Infrared) at 10 m spatial resolution. Multi-temporal imagery covering different seasons/years was obtained from the Copernicus Open Access Hub and Google Earth Engine.
 
-Identify areas of vegetation gain and loss
+Methodology
 
-Visualize NDVI maps and change results
+Satellite imagery was first pre-processed through cloud masking and clipping to the defined region of interest. NDVI was computed for each time period using the standard normalized difference formulation. Change detection was performed by differencing NDVI images from two time points (ΔNDVI = NDVIₜ₂ − NDVIₜ₁). The resulting change map was classified into vegetation increase, vegetation decrease, and no significant change categories. Spatial and statistical analyses were conducted to interpret vegetation dynamics.
 
-Support applications such as agriculture monitoring, land use analysis, and environmental assessment
+NDVI Computation
 
-🛰️ Data Used
+NDVI was calculated using the equation:
 
-Satellite: Sentinel-2 (Level-2A)
+NDVI = (NIR − Red) / (NIR + Red)
 
-Spatial Resolution: 10 m
+where NIR represents reflectance from the Near Infrared band and Red represents reflectance from the Red band. NDVI values range from −1 to +1, with higher values indicating healthier vegetation.
 
-Spectral Bands:
+Tools and Software
 
-Red (Band 4)
+The analysis was conducted using Google Earth Engine (JavaScript/Python API), QGIS, and Python libraries including NumPy, Rasterio, and Matplotlib.
 
-Near Infrared – NIR (Band 8)
+Results
 
-Temporal Coverage: Multi-year / multi-season imagery
+The study produced NDVI maps for multiple time periods and NDVI difference maps highlighting vegetation changes. The results reveal clear spatial patterns of vegetation gain and loss within the study area, supported by quantitative NDVI statistics.
 
-Source: Copernicus Open Access Hub / Google Earth Engine
+Applications
 
-🧮 NDVI Formula
-𝑁
-𝐷
-𝑉
-𝐼
-=
-(
-𝑁
-𝐼
-𝑅
-−
-𝑅
-𝑒
-𝑑
-)
-(
-𝑁
-𝐼
-𝑅
-+
-𝑅
-𝑒
-𝑑
-)
-NDVI=
-(NIR+Red)
-(NIR−Red)
-	​
+NDVI change detection is useful for crop health monitoring, drought assessment, land use and land cover change analysis, and long-term environmental monitoring.
 
+Conclusion
 
-Where:
+This project demonstrates the effectiveness of NDVI-based change detection in capturing vegetation dynamics using remote sensing data. The approach is computationally efficient and scalable for regional to large-area analysis.
 
-NIR = Near Infrared reflectance
+Future Scope
 
-Red = Red band reflectance
-
-NDVI values range from -1 to +1:
-
-High NDVI → Healthy vegetation
-
-Low NDVI → Bare soil / water / degraded land
-
-🔍 Methodology
-
-Data Acquisition
-
-Download Sentinel-2 imagery or access via Google Earth Engine
-
-Pre-processing
-
-Cloud masking
-
-Image clipping to ROI
-
-NDVI Calculation
-
-Compute NDVI for each time period
-
-Change Detection
-
-NDVI Difference:
-
-Δ
-𝑁
-𝐷
-𝑉
-𝐼
-=
-𝑁
-𝐷
-𝑉
-𝐼
-𝑡
-2
-−
-𝑁
-𝐷
-𝑉
-𝐼
-𝑡
-1
-ΔNDVI=NDVI
-t2
-	​
-
-−NDVI
-t1
-	​
-
-
-Classification of Change
-
-Vegetation Increase
-
-Vegetation Decrease
-
-No Significant Change
-
-Visualization & Analysis
-
-NDVI maps
-
-NDVI difference maps
-
-Temporal trend analysis
-
-🛠️ Tools & Technologies
-
-Google Earth Engine (JavaScript / Python API)
-
-QGIS / ArcGIS
-
-Python (NumPy, Rasterio, Matplotlib)
-
-Jupyter Notebook
-
-📊 Results
-
-Generated NDVI maps for multiple time periods
-
-Identified spatial patterns of vegetation change
-
-Highlighted regions with significant vegetation loss and gain
-
-Provided quantitative NDVI statistics for analysis
+Future work may include multi-year NDVI time-series analysis, integration of additional vegetation indices such as EVI and SAVI, and the application of machine learning techniques for improved change classification.
